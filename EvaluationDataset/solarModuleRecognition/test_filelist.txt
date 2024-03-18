@@ -1,0 +1,54 @@
+test/5-VDS-S144-M6H-BG-430_2_0.xml
+test/5-VDS-S144-M6H-BG-430_2_1.xml
+test/5-VDS-S144-M6H-BG-430_2_2.xml
+test/5-VDS-S144-M6H-BG-430_2_3.xml
+test/5-VDS-S144-M6H-BG-430_2_4.xml
+test/5-VDS-S144-M6H-BG-430_2_5.xml
+test/5-VDS-S144-M6H-BG-430_2_6.xml
+test/Eging_2_0.xml
+test/Eging_2_1.xml
+test/Eging_2_2.xml
+test/Eging_2_3.xml
+test/Eging_2_4.xml
+test/Eging_2_5.xml
+test/JAM66D45_LB_2_0.xml
+test/JAM66D45_LB_2_1.xml
+test/JAM66D45_LB_2_2.xml
+test/LG_Datenblatt PV-Modul350Wp_2_0.xml
+test/LG_Datenblatt PV-Modul350Wp_2_1.xml
+test/LG_Datenblatt PV-Modul350Wp_2_2.xml
+test/LG_Datenblatt PV-Modul350Wp_2_3.xml
+test/LG_Datenblatt PV-Modul350Wp_2_4.xml
+test/LG_Datenblatt PV-Modul350Wp_2_5.xml
+test/LG_Datenblatt PV-Modul350Wp_2_6.xml
+test/SEG660675BMCHV210EN_2_0.xml
+test/SEG660675BMCHV210EN_2_1.xml
+test/SEG660675BMCHV210EN_2_2.xml
+test/SEG660675BMCHV210EN_2_3.xml
+test/sp_mst_p6_blk_res_2000-700mm_cable_mc4_ds_de_a4_547495_2_0.xml
+test/sp_mst_p6_blk_res_2000-700mm_cable_mc4_ds_de_a4_547495_2_1.xml
+test/sp_mst_p6_blk_res_2000-700mm_cable_mc4_ds_de_a4_547495_2_2.xml
+test/SPIC_2KgOXAf7NkCnekudcl72_2_0.xml
+test/SPIC_2KgOXAf7NkCnekudcl72_2_1.xml
+test/SPIC_2KgOXAf7NkCnekudcl72_2_2.xml
+test/SPIC_2KgOXAf7NkCnekudcl72_2_3.xml
+test/SPIC_2KgOXAf7NkCnekudcl72_2_4.xml
+test/Sunlink_2_0.xml
+test/Sunlink_2_1.xml
+test/Sunlink_2_2.xml
+test/Sunlink_2_3.xml
+test/Sunlink_2_4.xml
+test/Sunlink_2_5.xml
+test/TOPCon S9-120GANT_2_0.xml
+test/TOPCon S9-120GANT_2_1.xml
+test/TOPCon S9-120GANT_2_2.xml
+test/TOPCon S9-120GANT_2_3.xml
+test/TOPCon S9-120GANT_2_4.xml
+test/TOPCon S9-120GANT_2_5.xml
+test/TOPCon S9-120GANT_2_6.xml
+test/WH144P8-30F_2_0.xml
+test/WH144P8-30F_2_1.xml
+test/WH144P8-30F_2_2.xml
+test/WH144P8-30F_2_3.xml
+test/WH144P8-30F_2_4.xml
+test/WH144P8-30F_2_5.xml

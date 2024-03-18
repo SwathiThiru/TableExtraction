@@ -1,0 +1,9 @@
+,,,,,
+Electrical Properties(ST/C*),,,,,
+Power Output(Wp),616,620,625,630,635
+Max Power Tolerance(W),0-5,05,0-5,0-5,0-5
+Module Efficiency(%),24.73,21.91,22.08,22.26,22.44
+Voltage Mpp-Vmpp(V),34.90,36.11,35.34,35.51,35.71
+Current Mpp-Impp(A),17.62,17.866,47.70,17.74,17.78
+Voltage Open Circuit-Voc(V),42.16,42.35,42.54,42.73,42.92
+Short Circuit Current-Isc(A),18.67,18.72,1877,48.82,18.87

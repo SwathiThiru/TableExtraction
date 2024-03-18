@@ -1,0 +1,11 @@
+Power level,435,440,445,450,455
+Pmax (W),435,440,445,450,455
+Vmp (Vv),41.04,41.24,41.44,41.63,41.82
+Imp (A),10.60,10.67,10.74,1081,10.88
+Voc (V),49.25,49.44,49.65,49.85,50.06
+Isc (A),(L119,,1171.24,1.31,1.38
+Module efficiency (%),20.01,20.24,«= 20.47,= 20.70,~—20.93
+Maximum system voltage (V),,,1500,,
+Fuse Rating (A),,,20,,
+Temperature coefficient Pmax (%°C),,,-0.350,-0.350,-0.350
+Temperature coefficient Isc (%°C),,,0.05,,

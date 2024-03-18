@@ -1,0 +1,11 @@
+Module Type,SEG-660-BMC-HV,SEG-660-BMC-HV,SEG-665-BMC-HV,SEG-665-BMC-HV,SEG-670-BMC-HV,SEG-670-BMC-HV,SEG-675-BMC-HV,SEG-675-BMC-HV
+,STC NocT,STC NocT,STC,NOCT,| sTc,NOCT,STC,NoctT
+Maximum Power -Pmp(Wp),660,496,665,500,670,504,675,| 507
+“Open Circuit Voltage -Voc(V),45.88,4359,46.08,43.78,46.28,43.96,46.48,44.15
+Short Circuit Current -Isc(A),18.44,1475,18.49,14.79,18.54,14.83,18.59,14.88
+Maximum Power Voltage -Vmp(V),38.16,| 35.86,3836,«36.06,38.56,36.27,38.76,3641
+Maximum Power Current -Imp(A),1729,| 13.88,1733,| 13.86,1737,13.90,17.42,13.94
+Module Efficiency(%),21.25,21.25,ma 2157,ma 2157,ma 2157,ma 2157,ma 2157,ma 2157
+Power Tolerance,"(0, 43%)","(0, 43%)","(0, 43%)","(0, 43%)","(0, 43%)","(0, 43%)","(0, 43%)","(0, 43%)"
+Maximum System Voltage,1500V DC,1500V DC,1500V DC,1500V DC,1500V DC,1500V DC,1500V DC,1500V DC
+Maximum Series Fuse Rating,30A,30A,30A,30A,30A,30A,30A,30A

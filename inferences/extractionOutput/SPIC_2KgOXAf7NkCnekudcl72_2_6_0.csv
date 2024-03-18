@@ -1,0 +1,6 @@
+Module Type,SPICN6(LAR}-60-375/IH | STC,SPICN6(LAR}-60-375/IH | NOCT,SPICN6(LAR)-60-380/1H | STC,SPICN6(LAR)-60-380/1H | NOCT,SPICN6(LAR)-60-385/IH | STC,SPICN6(LAR)-60-385/IH | NOCT
+Maximum Power (Pmax/W),375,282,380,286,385,290
+Maximum Power Voltage (Vmpp/V),35.1,32.5,35.3,B27,35:5,32.9
+Maximum Power Current (Impp/A),10.69,8.68,10.77,8.75,10.85,8.82
+Open Circuit Voltage (Voc/V),Al.6,39.8,ALT,39.9,41.8,40.0
+Short Circuit Current (Isc/A),11.50,9.23,11.61,9.32,11.72,9.42

@@ -1,0 +1,10 @@
+test/5-VDS-S144-M6H-BG-430_2.xml
+test/Eging_2.xml
+test/JAM66D45_LB_2.xml
+test/LG_Datenblatt PV-Modul350Wp_2.xml
+test/SEG660675BMCHV210EN_2.xml
+test/sp_mst_p6_blk_res_2000-700mm_cable_mc4_ds_de_a4_547495_2.xml
+test/SPIC_2KgOXAf7NkCnekudcl72_2.xml
+test/Sunlink_2.xml
+test/TOPCon S9-120GANT_2.xml
+test/WH144P8-30F_2.xml

@@ -1,0 +1,9 @@
+Module Type Box Operating Cell Temperature (NOCT),SEG-660-BMC-HV Anodized aluminium 4542 | STC IP68,SEG-660-BMC-HV Anodized aluminium 4542 | NOCT / 3 diodes,SEG-665-BMC-HV alloy °C | STC,SEG-665-BMC-HV alloy °C | NOCT,SEG-670-BMC-HV | STC,SEG-670-BMC-HV | NOCT,SEG-675-BMC-HV | STC,SEG-675-BMC-HV | NOCT
+Maximum Power -Pmp(Wp) Type,660,496 PV-CO02-xy,665,500,670,504,675,507
+Open Circuit Voltage -Voc(V),45.88 12 AWG,43.59 PV Wire UL,46.08,43.78,46.28,43.96,46.48,44.15
+Short Circuit Current -Isc(A) Type,18.44 Portrait: 400,1475 mm(+) / 200,18.49 mm(-),14.79,18.54,14.83,18.59,14.88
+Maximum Power Voltage -Vmp(V) Length,38.16 Landscape: or,35.86 1200 mm(+) / customized length,38.36 1200 mm(-),36.06,38.56,36.27,38.76,36.41
+Maximum Power Current -Imp(A) Load(Front),17.29 5400,13.83 Pa 113 psf,17.33,13.86,17.37,13.90,17.42,13.94
+Module Efficiency(%),21.25,/,,21.41,,21.57,21.73,21.73
+Power Tolerance Load(Rear),2400 Pa/ 50 psf*,2400 Pa/ 50 psf*,,,"(0, +3%)",,,
+Maximum System Voltage,,,,4500V DC,4500V DC,4500V DC,4500V DC,4500V DC

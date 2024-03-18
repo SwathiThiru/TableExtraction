@@ -1,0 +1,15 @@
+,,,,,
+,,Elektrische Daten,,,
+,SPR-P6-415-BLK,SPR-P6-410-BLK,SPR-P6-405-BLK,SPR-P6-400-BLK,SPR-P6-395-BLK
+Nennleistung (Pnom)',4i5W,410 W,405 W,400 W,395 W
+Leistungstoleranz,+3/0%,+3/0%,+3/0%,+3/0%,+3/0%
+Modulwirkungsgrad,"21,1%","20,9%","20,6%","20,4%","20,1%"
+MPP-Spannung (Umpp).,"30,2V","29,9V","29,6V","29,3V","29,0 V"
+MPP-Strom (Impp),"13,76A","13,73A","13,70A","13,67 A","13,644"
+Leerlaufspannung (Uoc) (+/-5%),"36,7 V","36,4V","36,2V","36,0V","35,8V"
+Kurzschlussstrom (Isc) (+/-5%),"14,39 A",1438 A,"14,37A","14,36A","14,35A"
+Max. Systemspannung,1000 V IEC,1000 V IEC,1000 V IEC,1000 V IEC,1000 V IEC
+Max. Sicherung bei Reihenschaltung,25A,25A,25A,25A,25A
+Leistungstemperaturkoef. (Pmpp),"-0,34% /°C","-0,34% /°C","-0,34% /°C","-0,34% /°C","-0,34% /°C"
+Spannungstemperaturkoef. (Voc),,,"-0,27%/°C",,
+Stromtemperaturkoef. (Isc),"0,04% /° C","0,04% /° C","0,04% /° C","0,04% /° C","0,04% /° C"

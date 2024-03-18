@@ -1,0 +1,12 @@
+'Container':
+    - '20" GP'
+    - '40" HC'
+'Pallets':
+    - '14'
+    - '28'
+'Number per pallet':
+    - '26 x 12 + 16 x 2'
+    - '30'
+'Amount':
+    - '344'
+    - '840'

@@ -1,0 +1,10 @@
+'Dimension': "166mm*166mm±0.25mm"
+'Diagonal': "223mm±0.5mm"
+'Thickness(Si)': "190μm±30μm"
+'Front': 
+  - "9 busbars(silver), width 0.1±0.03mm"
+  - "124 finger grids"
+  - "Blue anti-reflecting coating (silicon nitride)"
+'Back':
+  - "width of back electrode(silver) 1.3±0.25mm," 
+  - "finger grids(aluminum), dotted laser design"

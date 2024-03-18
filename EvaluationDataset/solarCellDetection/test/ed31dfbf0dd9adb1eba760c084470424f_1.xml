@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>ed31dfbf0dd9adb1eba760c084470424f_1.jpg</filename>
+	<path>S:\23502\2\280_PVM\Aktuell\01_Orga\23131_MAS_TeamModulbewertung\03_Arbeitsordner\Swathi_Thiruvengadam\TATREvaluationDataset\solarCellDetection\images\ed31dfbf0dd9adb1eba760c084470424f_1.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1654</width>
+		<height>2339</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>table</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>291</xmin>
+			<ymin>422</ymin>
+			<xmax>1620</xmax>
+			<ymax>777</ymax>
+		</bndbox>
+	</object>
+</annotation>
