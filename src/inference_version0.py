@@ -58,16 +58,14 @@ def get_class_map(data_type):
             'table column header': 3,
             'table projected row header': 4,
             'table spanning cell': 5,
-            'no object': 6,
-            'table row header': 7,
-            'table projected column header': 8
+            'no object': 6
         }
     elif data_type == 'detection':
         class_map = {'table': 0, 'table rotated': 1, 'no object': 2}
     return class_map
 
 detection_class_thresholds = {
-    "table": 0.8,
+    "table": 0.4,
     "table rotated": 0.7,
     "no object": 10
 }
@@ -215,23 +213,13 @@ def refine_table_structure(table_structure, class_thresholds):
     column_headers = postprocess.nms(column_headers)
     column_headers = align_headers(column_headers, rows)
 
-    # Process the row headers
-    row_headers = table_structure['row headers']
-    row_headers = postprocess.apply_threshold(row_headers, class_thresholds["table row header"])
-    row_headers = postprocess.nms(row_headers)
-    row_headers = align_headers(row_headers, columns)
-
     # Process spanning cells
-    spanning_cells = [elem for elem in table_structure['spanning cells'] if not elem['projected row header'] and not elem['projected column header']]
+    spanning_cells = [elem for elem in table_structure['spanning cells'] if not elem['projected row header']]
     projected_row_headers = [elem for elem in table_structure['spanning cells'] if elem['projected row header']]
-    projected_column_headers = [elem for elem in table_structure['spanning cells'] if elem['projected column header']]
-
     spanning_cells = postprocess.apply_threshold(spanning_cells, class_thresholds["table spanning cell"])
     projected_row_headers = postprocess.apply_threshold(projected_row_headers,
                                                         class_thresholds["table projected row header"])
-    projected_column_headers = postprocess.apply_threshold(projected_column_headers,
-                                                        class_thresholds["table projected column header"])
-    spanning_cells += projected_row_headers + projected_column_headers
+    spanning_cells += projected_row_headers
     # Align before NMS for spanning cells because alignment brings them into agreement
     # with rows and columns first; if spanning cells still overlap after this operation,
     # the threshold for NMS can basically be lowered to just above 0
@@ -244,7 +232,6 @@ def refine_table_structure(table_structure, class_thresholds):
     table_structure['rows'] = rows
     table_structure['spanning cells'] = spanning_cells
     table_structure['column headers'] = column_headers
-    table_structure['row headers'] = row_headers
 
     return table_structure
 
@@ -369,36 +356,18 @@ def objects_to_structures(objects, tokens, class_thresholds):
         columns = [obj for obj in table_objects if obj['label'] == 'table column']
         rows = [obj for obj in table_objects if obj['label'] == 'table row']
         column_headers = [obj for obj in table_objects if obj['label'] == 'table column header']
-        row_headers = [obj for obj in table_objects if obj['label'] == 'table row header']
         spanning_cells = [obj for obj in table_objects if obj['label'] == 'table spanning cell']
-
         for obj in spanning_cells:
             obj['projected row header'] = False
-            obj['projected column header'] = False
-
         projected_row_headers = [obj for obj in table_objects if obj['label'] == 'table projected row header']
         for obj in projected_row_headers:
             obj['projected row header'] = True
-
-        projected_column_headers = [obj for obj in table_objects if obj['label'] == 'table projected column header']
-        for obj in projected_column_headers:
-            obj['projected column header'] = True
-
-        spanning_cells += projected_row_headers + projected_column_headers
+        spanning_cells += projected_row_headers
         for obj in rows:
             obj['column header'] = False
-            obj['row header'] = False
             for header_obj in column_headers:
                 if iob(obj['bbox'], header_obj['bbox']) >= 0.5:
                     obj['column header'] = True
-
-        # for columns should we do it separately
-        for obj in columns:
-            obj['column header'] = False
-            obj['row header'] = False
-            for header_obj in row_headers:
-                if iob(obj['bbox'], header_obj['bbox']) >= 0.5:
-                    obj['row header'] = True
 
         # Refine table structures
         rows = postprocess.refine_rows(rows, table_tokens, class_thresholds['table row'])
@@ -422,7 +391,6 @@ def objects_to_structures(objects, tokens, class_thresholds):
         structure['rows'] = rows
         structure['columns'] = columns
         structure['column headers'] = column_headers
-        structure['row headers'] = row_headers
         structure['spanning cells'] = spanning_cells
 
         if len(rows) > 0 and len(columns) > 1:
@@ -453,10 +421,9 @@ def structure_to_cells(table_structure, tokens):
             column_rect = Rect(list(column['bbox']))
             row_rect = Rect(list(row['bbox']))
             cell_rect = row_rect.intersect(column_rect)
-            col_header = 'column header' in row and row['column header']
-            row_header = 'row header' in column and column['row header']
+            header = 'column header' in row and row['column header']
             cell = {'bbox': list(cell_rect), 'column_nums': [column_num], 'row_nums': [row_num],
-                    'column header': col_header, 'row header': row_header}
+                    'column header': header}
 
             cell['subcell'] = False
             for spanning_cell in spanning_cells:
@@ -472,7 +439,6 @@ def structure_to_cells(table_structure, tokens):
                 # cell text = extract_text_inside_bbox(table_spans, cell['bbox'])
                 # cell['cell text'] = cell text
                 cell['projected row header'] = False
-                cell['projected column header'] = False
                 cells.append(cell)
 
     for spanning_cell in spanning_cells:
@@ -480,8 +446,7 @@ def structure_to_cells(table_structure, tokens):
         cell_columns = set()
         cell_rows = set()
         cell_rect = None
-        col_header = True
-        row_header = True
+        header = True
         for subcell in subcells:
             subcell_rect = Rect(list(subcell['bbox']))
             subcell_rect_area = subcell_rect.get_area()
@@ -496,12 +461,10 @@ def structure_to_cells(table_structure, tokens):
                 # By convention here, all subcells must be classified
                 # as header cells for a spanning cell to be classified as a header cell;
                 # otherwise, this could lead to a non-rectangular header region
-                col_header = col_header and 'column header' in subcell and subcell['column header']
-                row_header = row_header and 'row header' in subcell and subcell['row header']
+                header = header and 'column header' in subcell and subcell['column header']
         if len(cell_rows) > 0 and len(cell_columns) > 0:
             cell = {'bbox': list(cell_rect), 'column_nums': list(cell_columns), 'row_nums': list(cell_rows),
-                    'column header': col_header, 'projected row header': spanning_cell['projected row header'],
-                    'row header': row_header, 'projected column header': spanning_cell['projected column header']}
+                    'column header': header, 'projected row header': spanning_cell['projected row header']}
             cells.append(cell)
 
     # Compute a confidence score based on how well the page tokens
@@ -718,18 +681,6 @@ def visualize_cells(img, cells, out_path):
             alpha = 0.3
             linewidth = 2
             hatch = '//////'
-        elif cell['row header']:
-            facecolor = (1, 0.8, 0.65)
-            edgecolor = (1, 0.8, 0.65)
-            alpha = 0.3
-            linewidth = 2
-            hatch = '//////'
-        elif cell['projected column header']:
-            facecolor = (0.6, 0.95, 0.1)
-            edgecolor = (0.6, 0.95, 0.1)
-            alpha = 0.3
-            linewidth = 2
-            hatch = '//////'
         else:
             facecolor = (0.3, 0.74, 0.8)
             edgecolor = (0.3, 0.7, 0.6)
@@ -746,12 +697,6 @@ def visualize_cells(img, cells, out_path):
         rect = patches.Rectangle(bbox[:2], bbox[2] - bbox[0], bbox[3] - bbox[1], linewidth=0,
                                  edgecolor=edgecolor, facecolor='none', linestyle='-', hatch=hatch, alpha=0.2)
         ax.add_patch(rect)
-        '''rect = patches.Rectangle(bbox[:2], bbox[2] - bbox[0], bbox[3] - bbox[1], linewidth=0,
-                                 edgecolor=edgecolor, facecolor='none', linestyle='-', hatch=hatch, alpha=0.2)
-        ax.add_patch(rect)
-        rect = patches.Rectangle(bbox[:2], bbox[2] - bbox[0], bbox[3] - bbox[1], linewidth=0,
-                                 edgecolor=edgecolor, facecolor='none', linestyle='-', hatch=hatch, alpha=0.2)
-        ax.add_patch(rect)'''
 
     plt.xticks([], [])
     plt.yticks([], [])
@@ -761,11 +706,7 @@ def visualize_cells(img, cells, out_path):
                        Patch(facecolor=(1, 0, 0.45), edgecolor=(1, 0, 0.45),
                              label='Column header cell', hatch='//////', alpha=0.3),
                        Patch(facecolor=(0.95, 0.6, 0.1), edgecolor=(0.95, 0.6, 0.1),
-                             label='Projected row header cell', hatch='//////', alpha=0.3),
-                       Patch(facecolor=(1, 0.8, 0.65), edgecolor=(1, 0.8, 0.65),
-                             label='Row header cell', hatch='//////', alpha=0.3),
-                       Patch(facecolor=(0.6, 0.95, 0.1), edgecolor=(0.6, 0.95, 0.1),
-                             label='Projected column header cell', hatch='//////', alpha=0.3),]
+                             label='Projected row header cell', hatch='//////', alpha=0.3)]
     plt.legend(handles=legend_elements, bbox_to_anchor=(0.5, -0.02), loc='upper center', borderaxespad=0,
                fontsize=10, ncol=3)
     plt.gcf().set_size_inches(10, 10)
